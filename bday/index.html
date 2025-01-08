@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You for Your Wishes</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1);
+            background-size: 300% 300%;
+            animation: gradient-animation 8s ease infinite;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            overflow: hidden;
+            transition: background 1s ease;
+        }
+        .container {
+            background: #f8f3f3aa;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            width: 70%;
+            max-width: 800px;
+            z-index: 2;
+            position: relative;
+        }
+        h1 {
+            font-size: 4rem;
+            color: #ff6b6b;
+            margin: 0;
+        }
+        p {
+            font-size: 1.8rem;
+            margin: 20px 0;
+        }
+        .thanks {
+            color: #444;
+            font-style: italic;
+        }
+        .footer {
+            margin-top: 30px;
+            font-size: 1.2rem;
+            color: #555;
+        }
+        .sparkles {
+            animation: sparkle-animation 2s infinite;
+        }
+        @keyframes sparkle-animation {
+            0% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.2); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.8; }
+        }
+        @keyframes gradient-animation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .celebrate-button {
+            margin-top: 20px;
+            padding: 15px 30px;
+            font-size: 1.5rem;
+            color: white;
+            background-color: #ff6b6b;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+        }
+        .celebrate-button:hover {
+            background-color: #ff4c4c;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1 class="sparkles">🎉 Thank You! 🎉</h1>
+        <p class="thanks">I feel so grateful for all your wonderful birthday wishes. 💖</p>
+        <p>You made my day extra special, and I appreciate your thoughtfulness. 😊</p>
+        <div class="footer">With love and gratitude, <br> <b>Arjun</b> </div>
+        <button class="celebrate-button" onclick="startCelebration()">Celebrate 🎆</button>
+    </div>
+
+    <script>
+        function startCelebration() {
+            document.body.style.background = "black";
+
+            const duration = 5 * 1000; // 5 seconds
+            const end = Date.now() + duration;
+
+            (function frame() {
+                confetti({
+                    particleCount: 50,
+                    startVelocity: 30,
+                    spread: 360,
+                    ticks: 60,
+                    origin: {
+                        x: Math.random(),
+                        y: Math.random() - 0.2
+                    },
+                    colors: ["#ff6b6b", "#ffd700", "#1e90ff", "#32cd32"]
+                });
+
+                if (Date.now() < end) {
+                    requestAnimationFrame(frame);
+                }
+            })();
+        }
+    </script>
+</body>
+</html>
